@@ -34,7 +34,6 @@ function selectImg(event) {
       function instanceCloseByEscape(evt) {
         if (evt.code === 'Escape') {
           instance.close(() => window.removeEventListener('keydown', instanceCloseByEscape));
-          console.log(evt.code);
         }
       }
     },
