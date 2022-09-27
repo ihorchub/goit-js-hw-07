@@ -30,19 +30,13 @@ function selectImg(event) {
 
   const instance = basicLightbox.create(`<img src=${bigImg}>`, {
     onShow: instance => {
-      window.addEventListener('keydown', instanceCloseByEscape, { once: true });
+      window.addEventListener('keydown', instanceCloseByEscape);
       function instanceCloseByEscape(evt) {
         if (evt.code === 'Escape') {
-          instance.close();
+          instance.close(() => window.removeEventListener('keydown', instanceCloseByEscape));
+          console.log(evt.code);
         }
       }
-      // window.addEventListener('keydown', instanceCloseByEscape);
-      // function instanceCloseByEscape(evt) {
-      //   if (evt.code === 'Escape') {
-      //     instance.close(() => window.removeEventListener('keydown', instanceCloseByEscape));
-      //     console.log(evt.code);
-      //   }
-      // }
     },
   });
   instance.show();

@@ -15,16 +15,16 @@ gallery.insertAdjacentHTML('beforeend', markup);
 
 gallery.addEventListener('click', selectImg, { once: true });
 
+const lightbox = new SimpleLightbox('.gallery .gallery__item', {
+  captionDelay: 250,
+  animationSpeed: 200,
+  fadeSpeed: 150,
+});
+
 function selectImg(event) {
   event.preventDefault();
 
   if (event.target.nodeName !== 'IMG') {
     return;
   }
-
-  const lightbox = new SimpleLightbox('.gallery .gallery__item', {
-    captionDelay: 250,
-    animationSpeed: 200,
-    fadeSpeed: 150,
-  });
 }
